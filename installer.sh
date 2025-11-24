@@ -25,7 +25,7 @@ rm -rf "$BINWALK_DIR" "$VENV_DIR" "$SASQ_SRC" "$BUILD_FILES_DIR" "$SQUASHFS_DIR"
 
 echo "=== 2. Instalando dependencias del sistema necesarias ==="
 sudo apt-get update
-sudo apt-get install -y python3-venv build-essential liblzma-dev liblzo2-dev zlib1g-dev wget git patch mtd-utils gzip bzip2 tar arj p7zip-full p7zip-rar cabextract squashfs-tools sleuthkit lzop lhasa zstd
+sudo apt-get install -y python3-venv build-essential liblzma-dev liblzo2-dev zlib1g-dev wget git patch mtd-utils gzip bzip2 tar arj p7zip-full p7zip-rar cabextract squashfs-tools sleuthkit lzop lhasa zstd libssl-dev pkg-config
 
 echo "=== 3. Creando y activando entorno virtual para instalación ==="
 python3 -m venv "$VENV_DIR"
@@ -41,7 +41,7 @@ echo "=== 5. Actualizando pip, setuptools y wheel en entorno virtual ==="
 pip install --upgrade pip setuptools wheel
 
 echo "=== 6. Instalando paquetes Python necesarios en entorno virtual ==="
-pip install kaleido toml six pyqt5 cstruct capstone pycrypto matplotlib numpy pyusb git+https://github.com/sviehb/jefferson.git
+pip install kaleido toml six pyqt5 cstruct capstone pycrypto matplotlib numpy pyusb jefferson==0.4.6
 
 echo "=== 7. Clonando o actualizando ReFirmLabs Binwalk ==="
 if [ -d "$BINWALK_DIR" ]; then
